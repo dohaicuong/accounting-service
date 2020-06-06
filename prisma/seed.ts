@@ -59,47 +59,57 @@ async function main() {
     }
   ]
 
-  let results = []
+  let promises = []
 
   for (const ledger of ledgers) {
-    results.push(await db.ledger.create({ data: ledger }))
+    promises.push(db.ledger.create({ data: ledger }))
   }
 
-  const equipmentId = (await db.account.findMany({
-    where: {
-      name: "Equipment"
-    },
-    select: {
-      id: true
-    }
-  })).pop().id;
+  Promise.all(promises);
 
-  const cashId = (await db.account.findMany({
-    where: {
-      name: "Equipment"
-    },
-    select: {
-      id: true
-    }
-  })).pop().id;
+  const equipmentId: string = await new Promise(async () => {
+    return (await db.account.findMany({
+      where: {
+        name: "Equipment"
+      },
+      select: {
+        id: true
+      }
+    })).pop().id;
+  });
+  
+  const cashId: string = await new Promise(async () => {
+    return (await db.account.findMany({
+      where: {
+        name: "Cash"
+      },
+      select: {
+        id: true
+      }
+    })).pop().id;
+  });
 
-  const merchandiseId = (await db.account.findMany({
-    where: {
-      name: "Equipment"
-    },
-    select: {
-      id: true
-    }
-  })).pop().id;
+  const merchandiseId: string = await new Promise(async () => {
+    return (await db.account.findMany({
+      where: {
+        name: "Merchandise"
+      },
+      select: {
+        id: true
+      }
+    })).pop().id;
+  });
 
-  const equitiesId = (await db.account.findMany({
-    where: {
-      name: "Equipment"
-    },
-    select: {
-      id: true
-    }
-  })).pop().id;
+  const equitiesId: string = await new Promise(async () => {
+    return (await db.account.findMany({
+      where: {
+        name: "Equities"
+      },
+      select: {
+        id: true
+      }
+    })).pop().id;
+  });
 
   const transactions = [
     {
@@ -278,13 +288,15 @@ async function main() {
     }
   ]
 
-  let newresults = []
+  promises = [];
 
   for (const transaction of transactions) {
-    results.push(await db.transaction.create({ data: transaction }))
+    promises.push(db.transaction.create({ data: transaction }));
   }
 
-  console.log('Seeded: %j', results)
+  Promise.all(promises);
+
+  console.log('Seed Complete');
 
   db.disconnect()
 }
