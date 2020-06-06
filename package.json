@@ -9,7 +9,10 @@
     "format": "npx prettier --write './**/*.{ts,md}'",
     "dev": "nexus dev",
     "build": "nexus build",
-    "start": "node .nexus/build/api"
+    "start": "node .nexus/build/api",
+    "migration:save": "prisma migrate save --experimental",
+    "migration:up": "prisma migrate up --experimental",
+    "seed": "ts-node prisma/seed"
   },
   "prettier": {
     "semi": false,
