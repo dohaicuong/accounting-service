@@ -3,7 +3,7 @@ import { schema } from "nexus";
 schema.inputObjectType({
   name: 'UpdateAccountInput',
   definition: t => {
-    t.string('accountId', { nullable: false })
+    t.id('accountId', { nullable: false })
     t.string('name')
     t.string('description')
     t.field('accountType', { type: 'AccountType' })

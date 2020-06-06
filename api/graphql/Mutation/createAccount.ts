@@ -3,7 +3,7 @@ import { schema } from "nexus";
 schema.inputObjectType({
   name: 'CreateAccountInput',
   definition: t => {
-    t.string('subledgerId', { nullable: false })
+    t.id('subledgerId', { nullable: false })
 
     t.string('name', { nullable: false })
     t.string('description', { nullable: false })
