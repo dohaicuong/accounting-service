@@ -1,6 +1,6 @@
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator prisma_client {
@@ -23,27 +23,6 @@ model Subledger {
   ledgerId    String?
 }
 
-// enum AccountType {
-//   DIVIDENDS
-//   EXPENSES
-//   ASSETS
-//   LOSSES
-//   GAINS
-//   INCOME
-//   REVENUES
-//   LIABILITIES
-//   EQUITY
-// }
-model Account {
-  id          String     @id @default(cuid())
-  name        String
-  description String
-  accountType String
-  lineItems   LineItem[]
-  Subledger   Subledger? @relation(fields: [subledgerId], references: [id])
-  subledgerId String?
-}
-
 model Transaction {
   id        String     @id @default(cuid())
   lineItems LineItem[]
@@ -52,11 +31,16 @@ model Transaction {
 
 model LineItem {
   id            String      @id @default(cuid())
-  amount        Float
-  description   String
   account       Account     @relation(fields: [accountId], references: [id])
   accountId     String
   transaction   Transaction @relation(fields: [transactionId], references: [id])
   transactionId String
   createdAt     DateTime    @default(now())
+}
+
+model Account {
+  id          String     @id @default(cuid())
+  lineItems   LineItem[]
+  Subledger   Subledger? @relation(fields: [subledgerId], references: [id])
+  subledgerId String?
 }

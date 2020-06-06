@@ -1,0 +1,19 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Ledger",
+      "field": "name",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Ledger",
+      "field": "description",
+      "type": "String",
+      "arity": "Required"
+    }
+  ]
+}

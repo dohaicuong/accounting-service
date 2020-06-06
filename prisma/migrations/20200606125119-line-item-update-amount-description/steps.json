@@ -1,0 +1,19 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "LineItem",
+      "field": "amount",
+      "type": "Float",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "LineItem",
+      "field": "description",
+      "type": "String",
+      "arity": "Required"
+    }
+  ]
+}

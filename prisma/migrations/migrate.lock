@@ -5,3 +5,8 @@
 
 20200606120046-init
 20200606120503-modeling-ledger--subledger--transaction--line-item-and-account
+20200606123857-ledger--update-name-description
+20200606124028-subledger-update-name-description
+20200606124242-account-update-name-description
+20200606125119-line-item-update-amount-description
+20200606125927-account-update-name-description-account-type
