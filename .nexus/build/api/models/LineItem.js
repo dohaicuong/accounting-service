@@ -2,9 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const nexus_1 = require("nexus");
 nexus_1.schema.objectType({
-    name: 'Account',
+    name: 'LineItem',
     definition: t => {
         t.model.id();
-        t.model.lineItems();
+        t.model.amount();
+        t.model.description();
+        t.model.account();
+        t.model.transaction();
     }
 });

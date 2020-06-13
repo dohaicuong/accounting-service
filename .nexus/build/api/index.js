@@ -14,12 +14,15 @@ process.once('unhandledRejection', error => {
     process.exit(1);
 });
 // Import the user's schema modules
-require("./graphql/Account");
-require("./graphql/Ledger");
-require("./graphql/LineItem");
+require("./enum/AccountType");
 require("./graphql/Query");
-require("./graphql/Subledger");
-require("./graphql/Transaction");
+require("./models/Account");
+require("./models/Ledger");
+require("./models/LineItem");
+require("./models/Subledger");
+require("./models/Transaction");
+require("./graphql/Mutation/createAccount");
+require("./graphql/Mutation/updateAccount");
 // Import the user's app module
 require("./app");
 nexus_1.default.assemble();
