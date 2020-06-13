@@ -10,3 +10,7 @@
 20200606124242-account-update-name-description
 20200606125119-line-item-update-amount-description
 20200606125927-account-update-name-description-account-type
+20200606150117-line-item-update-remove-create-at
+20200613131215-user-model
+20200613131316-update-user-name
+20200613134955-user-update-email-password
