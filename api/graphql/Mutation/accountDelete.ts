@@ -1,14 +1,14 @@
 import { schema } from "nexus";
 
 schema.inputObjectType({
-  name: 'DeleteAccountInput',
+  name: 'AccountDeleteInput',
   definition: t => {
     t.id('accountId')
   }
 })
 
 schema.objectType({
-  name: 'DeleteAccountPayload',
+  name: 'AccountDeletePayload',
   definition: t => {
     t.field('account', { type: 'Account' })
   }
@@ -17,11 +17,11 @@ schema.objectType({
 schema.extendType({
   type: 'Mutation',
   definition: t => {
-    t.field('deleteAccount', {
-      type: 'DeleteAccountPayload',
+    t.field('accountDelete', {
+      type: 'AccountDeletePayload',
       args: {
         input: schema.arg({
-          type: 'DeleteAccountInput',
+          type: 'AccountDeleteInput',
           nullable: false
         })
       },

@@ -1,7 +1,7 @@
 import { schema } from "nexus";
 
 schema.inputObjectType({
-  name: 'UpdateAccountInput',
+  name: 'AccountUpdateInput',
   definition: t => {
     t.id('accountId', { nullable: false })
     t.string('name')
@@ -11,7 +11,7 @@ schema.inputObjectType({
 })
 
 schema.objectType({
-  name: 'UpdateAccountPayload',
+  name: 'AccountUpdatePayload',
   definition: t => {
     t.field('account', { type: 'Account' })
   }
@@ -20,11 +20,11 @@ schema.objectType({
 schema.extendType({
   type: 'Mutation',
   definition: t => {
-    t.field('updateAccount', {
-      type: 'UpdateAccountPayload',
+    t.field('accountUpdate', {
+      type: 'AccountUpdatePayload',
       args: {
         input: schema.arg({
-          type: 'UpdateAccountInput',
+          type: 'AccountUpdateInput',
           nullable: false,
         })
       },

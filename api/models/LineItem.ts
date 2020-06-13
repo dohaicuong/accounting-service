@@ -8,6 +8,5 @@ schema.objectType({
     t.model.description()
     t.model.account()
     t.model.transaction()
-    t.model.createdAt()
   }
 })

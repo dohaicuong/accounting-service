@@ -1,7 +1,7 @@
 import { schema } from "nexus";
 
 schema.inputObjectType({
-  name: 'CreateAccountInput',
+  name: 'AccountCreateInput',
   definition: t => {
     t.id('subledgerId', { nullable: false })
 
@@ -12,7 +12,7 @@ schema.inputObjectType({
 })
 
 schema.objectType({
-  name: 'CreateAccountPayload',
+  name: 'AccountCreatePayload',
   definition: t => {
     t.field('account', { type: 'Account' })
   }
@@ -21,15 +21,16 @@ schema.objectType({
 schema.extendType({
   type: 'Mutation',
   definition: t => {
-    t.field('createAccount', {
-      type: 'CreateAccountPayload',
+    t.field('accountCreate', {
+      type: 'AccountCreatePayload',
       args: {
         input: schema.arg({
-          type: 'CreateAccountInput',
+          type: 'AccountCreateInput',
           nullable: false
         })
       },
       resolve: async (_, { input }, { db }) => {
+        // ledger, subledger, account
         const account = await db.account.create({
           data: {
             name: input.name,
